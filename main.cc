@@ -9,19 +9,21 @@
 #include <cstdlib>
 #include <iostream>
 
-using namespace std;
-
+/*!
+ Entry point of the application. 
+ */
 int main(int argc, char* argv[])
 {     
+        // Caller must provide the path to an input file
         if (argc < 2)
         {
-                std::cout << "Provide the path to an input file." << endl;
+                std::cout << "Provide the path to an input file." << std::endl;
                 return -1;
         }
 
         std::string input(argv[1]);
 
-        Game game = Game();
+        Game game = Game(input);
 
-        return game.Play(input);	
+        return game.play();	
 }
