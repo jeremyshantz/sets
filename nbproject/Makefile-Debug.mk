@@ -64,26 +64,26 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sets
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f2
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sets: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sets ${OBJECTFILES} ${LDLIBSOPTIONS}
+${TESTDIR}/TestFiles/f2: ${OBJECTFILES}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Game.o: Game.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cc
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Game.o Game.cc
 
 ${OBJECTDIR}/StringUtility.o: StringUtility.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringUtility.o StringUtility.cc
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringUtility.o StringUtility.cc
 
 ${OBJECTDIR}/main.o: main.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cc
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cc
 
 # Subprojects
 .build-subprojects:
@@ -97,8 +97,8 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/InputTests.o ${OBJECTFILES:%.o=%_nomai
 
 ${TESTDIR}/tests/InputTests.o: tests/InputTests.cc 
 	${MKDIR} -p ${TESTDIR}/tests
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/InputTests.o tests/InputTests.cc
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/InputTests.o tests/InputTests.cc
 
 
 ${OBJECTDIR}/Game_nomain.o: ${OBJECTDIR}/Game.o Game.cc 
@@ -108,8 +108,8 @@ ${OBJECTDIR}/Game_nomain.o: ${OBJECTDIR}/Game.o Game.cc
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game_nomain.o Game.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Game_nomain.o Game.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Game.o ${OBJECTDIR}/Game_nomain.o;\
 	fi
@@ -121,8 +121,8 @@ ${OBJECTDIR}/StringUtility_nomain.o: ${OBJECTDIR}/StringUtility.o StringUtility.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringUtility_nomain.o StringUtility.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringUtility_nomain.o StringUtility.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/StringUtility.o ${OBJECTDIR}/StringUtility_nomain.o;\
 	fi
@@ -134,8 +134,8 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cc
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
@@ -152,7 +152,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cc
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sets
+	${RM} ${TESTDIR}/TestFiles/f2
 
 # Subprojects
 .clean-subprojects:

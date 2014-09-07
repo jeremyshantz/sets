@@ -72,18 +72,18 @@ ${TESTDIR}/TestFiles/f2: ${OBJECTFILES}
 
 ${OBJECTDIR}/Game.o: Game.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cc
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Game.o Game.cc
 
 ${OBJECTDIR}/StringUtility.o: StringUtility.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringUtility.o StringUtility.cc
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringUtility.o StringUtility.cc
 
 ${OBJECTDIR}/main.o: main.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cc
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cc
 
 # Subprojects
 .build-subprojects:
@@ -97,8 +97,8 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/InputTests.o ${OBJECTFILES:%.o=%_nomai
 
 ${TESTDIR}/tests/InputTests.o: tests/InputTests.cc 
 	${MKDIR} -p ${TESTDIR}/tests
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/InputTests.o tests/InputTests.cc
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/InputTests.o tests/InputTests.cc
 
 
 ${OBJECTDIR}/Game_nomain.o: ${OBJECTDIR}/Game.o Game.cc 
@@ -108,8 +108,8 @@ ${OBJECTDIR}/Game_nomain.o: ${OBJECTDIR}/Game.o Game.cc
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game_nomain.o Game.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Game_nomain.o Game.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Game.o ${OBJECTDIR}/Game_nomain.o;\
 	fi
@@ -121,8 +121,8 @@ ${OBJECTDIR}/StringUtility_nomain.o: ${OBJECTDIR}/StringUtility.o StringUtility.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringUtility_nomain.o StringUtility.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringUtility_nomain.o StringUtility.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/StringUtility.o ${OBJECTDIR}/StringUtility_nomain.o;\
 	fi
@@ -134,8 +134,8 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cc
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cc;\
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cc;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
